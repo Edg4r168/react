@@ -1,0 +1,9 @@
+.success-message {
+    position: absolute;
+    background: linear-gradient(45deg, #4CAF50, #45a049);
+    padding: 15px;
+    border-radius: 5px;
+    font-size: 14px;
+    color: #fff; 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}

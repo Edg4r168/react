@@ -1,0 +1,20 @@
+
+.gf-header {
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+}
+
+.gf-header a {
+    font-size: 16px;
+    color: whitesmoke;
+    text-decoration: none;
+}
+
+.gf-header a + a {
+    margin-left: 12px;
+}
+
+.gf-header a:hover {
+    text-decoration: underline;
+}

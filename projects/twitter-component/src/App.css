@@ -1,0 +1,95 @@
+/* #root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+} */
+
+.tw-followCar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  /* column-gap: 16px; */
+  font-size: .8rem;
+  color: #fff;
+}
+
+.tw-followCar-header {
+  display: flex;
+  align-items: center;
+  column-gap: 8px;
+}
+
+.tw-followCar-info {
+  display: flex;
+  flex-direction: column;
+  max-width: 144px;
+  word-wrap: break-word;
+}
+
+.tw-followCar-info span {
+  opacity: 0.6;
+}
+
+.tw-followCar-avatar {
+  width: 48px;
+  height: 48px;
+  border-radius: 100%;
+}
+
+.tw-followCar-button {
+  padding: 0.6em .7em;
+  border: 1px solid transparent;
+  border-radius: 18px;
+  font-size: 1em;
+  font-weight: bold;
+  font-family: inherit;
+  background-color: #1a1a1a;
+  cursor: pointer;
+  transition: .4s ease background-color;
+}
+
+.tw-followCar-button:hover {
+  background-color: white;
+  color: #1a1a1a;
+}
+
+.tw-followCar-button.is-followin {
+  width: 111px;
+}
+
+.tw-followCar-button.is-followin:hover {
+  background-color: red;
+  color: inherit;
+}
+
+
+
+.tw-followCar-button.is-followin:hover .tw-followCar-text {
+  display: none;
+}
+
+.tw-followCar-button.is-followin:hover .tw-followCar-stopFollow {
+  display: block;
+}
+
+
+.tw-followCar-stopFollow {
+  display: none;
+}
+
+
+@keyframes logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  a:nth-of-type(2) .logo {
+    animation: logo-spin infinite 20s linear;
+  }
+}
+

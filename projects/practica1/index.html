@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    
+    <style>
+        picture {
+            display: flex;
+            flex-direction: column;
+            width: 100px;
+            text-align: center;
+        }
+
+        picture.is-small {
+            width: 50px;
+        }
+
+        picture.is-large {
+            width: 200px;
+        }
+
+        img {
+            box-shadow: 0 0 15px #999;
+            border-radius: 50%;
+            width: 100%;
+        }
+
+        img.disabled {
+            opacity: 0.3;
+        }
+    </style>
+    <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+</head>
+
+<body>
+    <h1>Women in tech</h1>
+
+    <div id="app">
+
+    </div>
+
+    <script type="text/babel">
+        const app = document.getElementById("app");
+        const useState = React.useState;
+        const c = React.createElement;
+
+        const Contador = () => {
+            const [ currentValue, setValue ] = useState(0)
+
+            return (
+                <div>
+                    <span>{currentValue}</span>
+                    <button onClick={() => {
+                        setValue(currentValue + 1)
+                    }}>Incrementar +
+                    </button>
+
+                    <button onClick={() => {
+                        if (currentValue !== 0) {
+                            setValue(currentValue - 1)
+                        }
+                    }}>Decrementar -
+                    </button>
+                </div>
+            )
+        }
+
+        //****** React sin JSX vs JSX*********
+        const Avatar = ({ id, name = "Denis", zice}) => {
+            // Devuelve un array
+            //  El primer elemento es el estado actual, y el segundo es una función que te permite actualizar ese estado.
+            const [ enable, setEnable ] = useState(true)
+            const imgClassName = enable ? "" : "disabled"
+            let pictureClassName = ""
+
+            if (zice === "small") {
+                pictureClassName = "is-small"
+            } else if (zice === "large") {
+                pictureClassName = "is-large"
+            }
+
+
+            const src = `https://randomuser.me/api/portraits/women/${id}.jpg`;
+
+        //          // JSX
+            return (
+                <picture className={pictureClassName}>
+                    {
+                        id ? (
+                            <img onClick={() => setEnable(!enable)} className={imgClassName} src={src}/>
+                        ) : (
+                            <span>Sin imagen</span>
+                        )
+                    }
+                    {enable ? name : "Desactivada"}
+                </picture>
+            )
+
+        //      //       |
+        //      //       | Se convierte
+        //      //       |
+        //      //       V
+
+        //         // React puro
+        //     //return c("img", {src})
+        }
+
+        ReactDOM.render(
+            <div>
+                <Contador/>
+                <Avatar id={1} name="Andrea" zice="small"/>
+                <Avatar id={10} name="Manuela"/>
+                <Avatar id={11} name="Manuela" zice="large"/>
+            </div>,
+            app
+        );
+                      //  Elemto  Atributos
+        //ReactDOM.render(c(Avatar, { id: 2}), app)
+
+
+
+        //****** Sin React *********
+
+        // const Avatar = params => {
+        //     const src = `https://randomuser.me/api/portraits/women/${params.id}.jpg`;
+
+        //     return `
+        //     <picture>
+        //         <img src="${src}" />
+        //         ${params.name}
+        //     </picture>
+        //     `
+        // }
+
+        // app.innerHTML += Avatar({ id: 1, name: "Andrea"})
+        // app.innerHTML += Avatar({ id: 2, name: "Manuela"})
+
+        // app.querySelectorAll("img").forEach(img => {
+        //     img.addEventListener("click", () => {
+        //         img.classList.toggle("disabled")
+        //     })
+        // })
+    </script>
+</body>
+</html>

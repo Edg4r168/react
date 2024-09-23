@@ -1,0 +1,10 @@
+.form label {
+    position: relative;
+}
+
+.form-error {
+    position: absolute;
+    bottom: -20px;
+    color: rgba(254, 0, 59, 0.905);
+}
+
